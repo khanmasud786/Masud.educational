@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masud Developer | Premium Educational Courses</title>
+    <meta name="description" content="Masud Developer - Premium educational courses to boost your coding & development skills. Learn from expert Masudur Rahman Khan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a28;
+            --primary: #6c5ce7;
+            --primary-light: #a29bfe;
+            --accent: #00d2ff;
+            --accent2: #ff6b9d;
+            --gold: #f0c040;
+            --text: #e8e8f0;
+            --text-muted: #a0a0b8;
+            --border: #1e1e30;
+            --glass: rgba(18, 18, 26, 0.85);
+            --shadow-glow: 0 0 40px rgba(108, 92, 231, 0.25);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============ ANIMATED BG PARTICLES ============ */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* ============ NAVBAR ============ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(10, 10, 15, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+        .nav-logo .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.5);
+        }
+        .nav-logo span {
+            background: linear-gradient(135deg, #fff, #c4b5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: var(--transition);
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), #8b5cf6) !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            padding: 10px 24px !important;
+            border-radius: 25px !important;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
+            transition: var(--transition) !important;
+        }
+        .nav-cta:hover {
+            box-shadow: 0 6px 30px rgba(108, 92, 231, 0.7) !important;
+            transform: translateY(-2px) !important;
+            background: linear-gradient(135deg, #7c6df0, #9b6dff) !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 30px 80px;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.18) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: heroGlow 6s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes heroGlow {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.3);
+            }
+        }
+        .hero-content {
+            max-width: 750px;
+            text-align: center;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.2);
+            border: 1px solid rgba(108, 92, 231, 0.4);
+            color: var(--primary-light);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+        .hero-content h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent), #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.5);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.7);
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            border: 2px solid var(--border);
+            color: #fff;
+            background: transparent;
+        }
+        .btn-outline:hover {
+            border-color: var(--primary-light);
+            background: rgba(108, 92, 231, 0.1);
+            transform: translateY(-3px);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============ SECTION STYLES ============ */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 90px 30px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header .section-badge {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.15);
+            color: var(--primary-light);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .section-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .section-header h2 .gradient-text {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============ COURSES SECTION ============ */
+        #courses {
+            background: rgba(18, 18, 26, 0.3);
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+        .course-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+        .course-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(108, 92, 231, 0.5);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-glow), var(--shadow-card);
+        }
+        .course-card .course-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
+        .icon-purple {
+            background: rgba(108, 92, 231, 0.2);
+            color: var(--primary-light);
+        }
+        .icon-cyan {
+            background: rgba(0, 210, 255, 0.2);
+            color: var(--accent);
+        }
+        .icon-pink {
+            background: rgba(255, 107, 157, 0.2);
+            color: var(--accent2);
+        }
+        .icon-gold {
+            background: rgba(240, 192, 64, 0.2);
+            color: var(--gold);
+        }
+        .icon-green {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+        .icon-orange {
+            background: rgba(255, 149, 0, 0.2);
+            color: #ff9500;
+        }
+        .course-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .course-card .course-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+        .course-card .course-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .course-card .course-meta i {
+            color: var(--primary-light);
+            margin-right: 4px;
+        }
+        .course-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            margin-top: auto;
+        }
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .course-price .original {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: 6px;
+        }
+        .course-price .discount {
+            font-size: 0.75rem;
+            background: #ff4757;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+            font-weight: 600;
+        }
+        .btn-sm {
+            padding: 10px 22px;
+            font-size: 0.85rem;
+            border-radius: 25px;
+        }
+        .course-card.popular {
+            border: 2px solid var(--gold);
+        }
+        .course-card.popular::before {
+            content: '🔥 BESTSELLER';
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--gold);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============ ABOUT SECTION ============ */
+        #about {
+            background: var(--bg-dark);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-image-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .about-image-placeholder {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #fff;
+            box-shadow: 0 20px 60px rgba(108, 92, 231, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 310px;
+            height: 310px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            animation: spin 20s linear infinite;
+            z-index: 0;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .about-text .highlight {
+            color: var(--primary-light);
+        }
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .about-features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        .about-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        .about-features li i {
+            color: #00ff88;
+            font-size: 1.1rem;
+        }
+        .social-links-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
+        }
+        .social-link.instagram:hover {
+            background: #e1306c;
+            border-color: #e1306c;
+            box-shadow: 0 8px 25px rgba(225, 48, 108, 0.5);
+        }
+        .social-link.email-link:hover {
+            background: #ea4335;
+            border-color: #ea4335;
+            box-shadow: 0 8px 25px rgba(234, 67, 53, 0.5);
+        }
+
+        /* ============ CONTACT SECTION ============ */
+        #contact {
+            background: rgba(18, 18, 26, 0.4);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            height: fit-content;
+        }
+        .contact-info-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.02);
+            transition: var(--transition);
+        }
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .contact-item .contact-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-item .contact-detail h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: var(--text-muted);
+        }
+        .contact-item .contact-detail span,
+        .contact-item .contact-detail a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .contact-item .contact-detail a:hover {
+            color: var(--primary-light);
+        }
+        .contact-form-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+        .contact-form-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .form-group textarea {
+            min-height: 120px;
+        }
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 40px 30px 20px;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .footer-tagline {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .footer-bottom {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+        .phone-display {
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        /* ============ TOAST / MODAL ============ */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: #00c853;
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(0, 200, 83, 0.4);
+            transform: translateY(120px);
+            opacity: 0;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.error {
+            background: #ff4757;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 968px) {
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image-wrapper {
+                order: -1;
+            }
+            .about-image-placeholder {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+            .about-image-wrapper::before {
+                width: 230px;
+                height: 230px;
+            }
+            .hero-stats {
+                gap: 20px;
+            }
+            .stat-number {
+                font-size: 1.6rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(10, 10, 15, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 100px 30px 40px;
+                gap: 20px;
+                transition: 0.4s ease;
+                border-left: 1px solid var(--border);
+                z-index: 999;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 12px 20px;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .courses-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 60px 16px;
+            }
+            .contact-form-card,
+            .contact-info-card {
+                padding: 20px;
+            }
+        }
+        @media (max-width: 400px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .hero-stats {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== PARTICLES ==================== -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon"><i class="fas fa-code"></i></div>
+                <span>Masud Dev</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Enroll Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">🚀 Masud Developer Official</div>
+            <h1>Learn To Code With<br><span class="gradient-text">Masudur Rahman Khan</span></h1>
+            <p>Master modern web development, programming &amp; tech skills with premium courses designed by an experienced developer. Start your journey from zero to hero today!</p>
+            <div class="hero-buttons">
+                <a href="#courses" class="btn btn-primary"><i class="fas fa-rocket"></i> Explore Courses</a>
+                <a href="#contact" class="btn btn-outline"><i class="fas fa-comment"></i> Get In Touch</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Premium Courses</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3,200+</div>
+                    <div class="stat-label">Happy Students</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.9★</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COURSES SECTION ==================== -->
+    <section id="courses">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">📚 Our Courses</div>
+                <h2>Premium <span class="gradient-text">Learning Paths</span></h2>
+                <p>Handcrafted courses to take your skills to the next level. Choose your path and start learning today.</p>
+            </div>
+            <div class="courses-grid">
+
+                <!-- Course 1 - Bestseller -->
+                <div class="course-card popular">
+                    <div class="course-icon icon-purple"><i class="fas fa-globe"></i></div>
+                    <h3>Full Stack Web Development</h3>
+                    <p class="course-desc">Master HTML, CSS, JavaScript, React, Node.js &amp; MongoDB. Build real-world projects from scratch.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 48 Hours</span>
+                        <span><i class="fas fa-video"></i> 120+ Lectures</span>
+                        <span><i class="fas fa-certificate"></i> Certificate</span>
+                    </div>
+                    <div class="course-price-row">
+                        <div class="course-price">₹499 <span class="original">₹2,999</span><span class="discount">83% OFF</span></div>
+                        <a href="#contact" class="btn btn-primary btn-sm">Enroll</a>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-icon icon-cyan"><i class="fab fa-react"></i></div>
+                    <h3>React JS Masterclass</h3>
+                    <p class="course-desc">Deep dive into React with Hooks, Redux, Next.js &amp; advanced patterns. Build scalable front-end apps.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 32 Hours</span>
+                        <span><i class="fas fa-video"></i> 85+ Lectures</span>
+                        <span><i class="fas fa-certificate"></i> Certificate</span>
+                    </div>
+                    <div class="course-price-row">
+                        <div class="course-price">₹399 <span class="original">₹2,499</span><span class="discount">84% OFF</span></div>
+                        <a href="#contact" class="btn btn-primary btn-sm">Enroll</a>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-icon icon-pink"><i class="fab fa-python"></i></div>
+                    <h3>Python Programming Pro</h3>
+                    <p class="course-desc">Learn Python from basics to advanced. Includes Django, data science intro &amp; automation scripts.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 36 Hours</span>
+                        <span><i class="fas fa-video"></i> 95+ Lectures</span>
+                        <span><i class="fas fa-certificate"></i> Certificate</span>
+                    </div>
+                    <div class="course-price-row">
+                        <div class="course-price">₹449 <span class="original">₹2,799</span><span class="discount">84% OFF</span></div>
+                        <a href="#contact" class="btn btn-primary btn-sm">Enroll</a>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="course-icon icon-gold"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>App Development Bootcamp</h3>
+                    <p class="course-desc">Build cross-platform mobile apps using Flutter &amp; Dart. Deploy to both Android &amp; iOS stores.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 40 Hours</span>
+                        <span><i class="fas fa-video"></i> 100+ Lectures</span>
+                        <span><i class="fas fa-certificate"></i> Certificate</span>
+                    </div>
+                    <div class="course-price-row">
+                        <div class="course-price">₹549 <span class="original">₹3,499</span><span class="discount">84% OFF</span></div>
+                        <a href="#contact" class="btn btn-primary btn-sm">Enroll</a>
+                    </div>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="course-card">
+                    <div class="course-icon icon-green"><i class="fas fa-database"></i></div>
+                    <h3>SQL &amp; Database Design</h3>
+                    <p class="course-desc">Master SQL queries, database design, PostgreSQL &amp; MySQL. Essential for every backend developer.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 20 Hours</span>
+                        <span><i class="fas fa-video"></i> 55+ Lectures</span>
+                        <span><i class="fas fa-certificate"></i> Certificate</span>
+                    </div>
+                    <div class="course-price-row">
+                        <div class="course-price">₹299 <span class="original">₹1,999</span><span class="discount">85% OFF</span></div>
+                        <a href="#contact" class="btn btn-primary btn-sm">Enroll</a>
+                    </div>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="course-card">
+                    <div class="course-icon icon-orange"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Cyber Security Fundamentals</h3>
+                    <p class="course-desc">Learn ethical hacking basics, network security &amp; how to protect systems from cyber threats.</p>
+                    <div class="course-meta">
+                        <span><i class="fas fa-clock"></i> 25 Hours</span>
+                        <span><i class="fas fa-video"></i> 65+ Lectures</span>
+                        <span><i class="fas fa-certificate"></i> Certificate</span>
+                    </div>
+                    <div class="course-price-row">
+                        <div class="course-price">₹349 <span class="original">₹2,299</span><span class="discount">85% OFF</span></div>
+                        <a href="#contact" class="btn btn-primary btn-sm">Enroll</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <div class="about-image-placeholder">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <div class="section-badge" style="margin-bottom:12px;">👋 About The Instructor</div>
+                    <h2>Hey, I'm <span class="highlight">Masudur Rahman Khan</span></h2>
+                    <p>I'm a passionate full-stack developer and educator dedicated to making tech education accessible and practical. With years of hands-on industry experience, I've helped thousands of students land their dream jobs and build amazing projects.</p>
+                    <p>My teaching philosophy is simple: <strong>learn by building</strong>. Every course is packed with real-world projects, challenges, and resources that mirror what you'll actually use in the industry.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> 5+ Years Industry Exp.</li>
+                        <li><i class="fas fa-check-circle"></i> 3,200+ Students Taught</li>
+                        <li><i class="fas fa-check-circle"></i> 15+ Courses Published</li>
+                        <li><i class="fas fa-check-circle"></i> Lifetime Support</li>
+                        <li><i class="fas fa-check-circle"></i> Project-Based Learning</li>
+                        <li><i class="fas fa-check-circle"></i> Certificate of Completion</li>
+                    </ul>
+                    <div class="social-links-row">
+                        <a href="https://www.instagram.com/masud_official_013" target="_blank" rel="noopener" class="social-link instagram" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:masudurrahmankhan994@gmail.com" class="social-link email-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+91983809XXXX" class="social-link" title="Call">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://wa.me/91983809XXXX" target="_blank" rel="noopener" class="social-link" title="WhatsApp" style="background:#25D366;border-color:#25D366;">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">📞 Get In Touch</div>
+                <h2>Let's <span class="gradient-text">Connect</span></h2>
+                <p>Have questions? Want to enroll? Reach out and I'll get back to you within 24 hours.</p>
+            </div>
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info-card">
+                    <h3>📋 Contact Details</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon icon-purple"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-detail">
+                            <h4>Email Address</h4>
+                            <a href="mailto:masudurrahmankhan994@gmail.com">masudurrahmankhan994@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon icon-cyan"><i class="fas fa-phone"></i></div>
+                        <div class="contact-detail">
+                            <h4>Phone Number</h4>
+                            <span class="phone-display">+91 98380 9××××</span>
+                            <br><small style="color:var(--text-muted);">(Full number shared on contact)</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon icon-pink"><i class="fab fa-instagram"></i></div>
+                        <div class="contact-detail">
+                            <h4>Instagram</h4>
+                            <a href="https://www.instagram.com/masud_official_013" target="_blank" rel="noopener">@masud_official_013</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon icon-green"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contact-detail">
+                            <h4>WhatsApp</h4>
+                            <span>+91 98380 9××××</span>
+                            <br><small style="color:var(--text-muted);">(Available for course inquiries)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <h3>💬 Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email *</label>
+                            <input type="email" id="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="course">Interested Course</label>
+                            <select id="course">
+                                <option value="">-- Select a Course --</option>
+                                <option value="Full Stack Web Development">Full Stack Web Development</option>
+                                <option value="React JS Masterclass">React JS Masterclass</option>
+                                <option value="Python Programming Pro">Python Programming Pro</option>
+                                <option value="App Development Bootcamp">App Development Bootcamp</option>
+                                <option value="SQL & Database Design">SQL &amp; Database Design</option>
+                                <option value="Cyber Security Fundamentals">Cyber Security Fundamentals</option>
+                                <option value="Other">Other / General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" placeholder="Tell me what you're looking for..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Masud Developer</div>
+            <p class="footer-tagline">Premium educational content by Masudur Rahman Khan. Learn, Build, Succeed. 🚀</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/masud_official_013" target="_blank" rel="noopener" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:masudurrahmankhan994@gmail.com" class="social-link email-link"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+91983809XXXX" class="social-link"><i class="fas fa-phone"></i></a>
+                <a href="https://wa.me/91983809XXXX" target="_blank" rel="noopener" class="social-link" style="background:#25D366;border-color:#25D366;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <strong>Masud Developer</strong> | All Rights Reserved | Made with ❤️ by Masudur Rahman Khan</p>
+                <p style="margin-top:4px;">📧 masudurrahmankhan994@gmail.com | 📱 +91 98380 9×××× | 📷 @masud_official_013</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== TOAST ==================== -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // ============ PARTICLES ============
+        (function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#6c5ce7', '#a29bfe', '#00d2ff', '#ff6b9d', '#f0c040', '#00ff88', '#ffffff'];
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = Math.random() * 15 + 8 + 's';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.boxShadow = `0 0 ${size * 3}px ${particle.style.backgroundColor}`;
+                container.appendChild(particle);
+            }
+        })();
+
+        // ============ NAVBAR SCROLL ============
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ============ MOBILE MENU ============
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ============ ACTIVE NAV LINK ON SCROLL ============
+        const sections = document.querySelectorAll('section[id]');
+        const navAnchors = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navAnchors.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // ============ TOAST FUNCTION ============
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + (isError ? 'error' : '');
+            // Force reflow
+            void toast.offsetWidth;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // ============ CONTACT FORM ============
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const course = document.getElementById('course').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                showToast('⚠️ Please fill in all required fields (Name, Email, Message).', true);
+                return;
+            }
+
+            // Simulate form submission (in real scenario, send to backend)
+            console.log('📩 Form Submitted:', { name, email, phone, course, message });
+
+            // Show success
+            showToast('✅ Message sent successfully! I\'ll get back to you soon.');
+
+            // Reset form
+            this.reset();
+
+            // Scroll to top of contact section to show success context
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // ============ SMOOTH SCROLL FOR ALL ANCHOR LINKS ============
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ============ INITIAL LOAD ANIMATION ============
+        console.log('🚀 Masud Developer - Premium Educational Website Ready!');
+        console.log('📧 Email: masudurrahmankhan994@gmail.com');
+        console.log('📱 Phone: +91 98380 9××××');
+        console.log('📷 Instagram: @masud_official_013');
+        console.log('👨‍💻 Developed by Masudur Rahman Khan');
+    </script>
+</body>
+</html>
